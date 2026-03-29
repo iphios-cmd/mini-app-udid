@@ -117,29 +117,6 @@
             opacity: 0.8;
         }
 
-        .user-info {
-            background: var(--ice);
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 13px;
-            color: var(--blue-dark);
-        }
-
-        .user-info .label {
-            font-size: 11px;
-            color: var(--blue);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .user-info .value {
-            font-weight: 600;
-            color: var(--navy);
-        }
-
         .btn-primary {
             width: 100%;
             padding: 18px 28px;
@@ -210,6 +187,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-family: monospace;
         }
 
         .hint-title svg {
@@ -226,6 +204,7 @@
             font-size: 14px;
             color: var(--blue-dark);
             line-height: 1.4;
+            font-family:monospace;
         }
 
         .step:last-child {
@@ -233,18 +212,18 @@
         }
 
         .step-num {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             background: var(--blue);
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
             flex-shrink: 0;
-            margin-top: -2px;
+            margin-top: 2px;
         }
 
         .safari-badge {
@@ -279,12 +258,7 @@
         </div>
 
         <h1>UDID Устройства</h1>
-        <p class="desc">Уникальный идентификатор для регистрации в Apple Developer Program</p>
-
-        <div class="user-info" id="userInfo" style="display: none;">
-            <div class="label">Пользователь</div>
-            <div class="value" id="userName">...</div>
-        </div>
+        <p class="desc">Для передачи UDID, нажмите - <br>"Передать UDID"</p>
 
         <a href="#" class="btn-primary" id="actionBtn">
             <svg viewBox="0 0 24 24">
@@ -297,25 +271,20 @@
 
         <div class="hint-box">
             <div class="hint-title">
-                <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 Как получить UDID
             </div>
             <div class="step">
                 <div class="step-num">1</div>
-                <div>Нажмите кнопку выше — откроется Safari с вашим профилем</div>
+                <div>Нажмите «Получить UDID»</div>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
-                <div>Установите профиль конфигурации</div>
+                <div>Далее заходите в Настройки → Загруженный профиль → Установить</div>
             </div>
             <div class="step">
                 <div class="step-num">3</div>
                 <div>
-                    Разрешите в настройках: Настройки → Основные → VPN и управление устройством
-                    <div class="safari-badge">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        Safari
-                    </div>
+                    Скопируйте UDID с результатной страницы
                 </div>
             </div>
         </div>
@@ -336,20 +305,10 @@
             if (user) {
                 const userId = user.id;
                 const username = user.username || 'no_username';
-                // Format: /7056914024/980386239/siecnom.mobileconfig
                 return `${baseUrl}/${userId}/${username}.mobileconfig`;
             } else {
-                // Fallback if user data not available
                 return `${baseUrl}.mobileconfig`;
             }
-        }
-
-        // Update UI with user info
-        if (user) {
-            const userInfo = document.getElementById('userInfo');
-            const userName = document.getElementById('userName');
-            userName.textContent = user.username ? `@${user.username}` : `ID: ${user.id}`;
-            userInfo.style.display = 'block';
         }
 
         // Set button link
@@ -361,7 +320,6 @@
             e.preventDefault();
             const url = buildUrl();
             
-            // Try to open in external browser
             if (tg.openLink) {
                 tg.openLink(url);
             } else {
