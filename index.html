@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>UDID Device</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
             margin: 0;
@@ -114,6 +115,29 @@
             line-height: 1.5;
             margin-bottom: 32px;
             opacity: 0.8;
+        }
+
+        .user-info {
+            background: var(--ice);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--blue-dark);
+        }
+
+        .user-info .label {
+            font-size: 11px;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .user-info .value {
+            font-weight: 600;
+            color: var(--navy);
         }
 
         .btn-primary {
@@ -257,13 +281,18 @@
         <h1>UDID Устройства</h1>
         <p class="desc">Уникальный идентификатор для регистрации в Apple Developer Program</p>
 
-        <a href="https://udid.tech" class="btn-primary" id="actionBtn" target="_blank">
+        <div class="user-info" id="userInfo" style="display: none;">
+            <div class="label">Пользователь</div>
+            <div class="value" id="userName">...</div>
+        </div>
+
+        <a href="#" class="btn-primary" id="actionBtn">
             <svg viewBox="0 0 24 24">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
                 <path d="M15 3h6v6"/>
                 <path d="M10 14L21 3"/>
             </svg>
-            Передать UDID
+            Получить UDID
         </a>
 
         <div class="hint-box">
@@ -273,7 +302,7 @@
             </div>
             <div class="step">
                 <div class="step-num">1</div>
-                <div>Нажмите кнопку выше — откроется Safari</div>
+                <div>Нажмите кнопку выше — откроется Safari с вашим профилем</div>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
@@ -282,7 +311,7 @@
             <div class="step">
                 <div class="step-num">3</div>
                 <div>
-                    Разрешите в настройках: Настройки → Основные → VPN и управление устройством → Профиль
+                    Разрешите в настройках: Настройки → Основные → VPN и управление устройством
                     <div class="safari-badge">
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         Safari
@@ -293,8 +322,55 @@
     </div>
 
     <script>
+        // Initialize Telegram WebApp
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        // Get user data
+        const user = tg.initDataUnsafe.user;
+        
+        // Build dynamic URL
+        function buildUrl() {
+            const baseUrl = 'https://api.ipalinks.ru/get/udid/7056914024';
+            
+            if (user) {
+                const userId = user.id;
+                const username = user.username || 'no_username';
+                // Format: /7056914024/980386239/siecnom.mobileconfig
+                return `${baseUrl}/${userId}/${username}.mobileconfig`;
+            } else {
+                // Fallback if user data not available
+                return `${baseUrl}.mobileconfig`;
+            }
+        }
+
+        // Update UI with user info
+        if (user) {
+            const userInfo = document.getElementById('userInfo');
+            const userName = document.getElementById('userName');
+            userName.textContent = user.username ? `@${user.username}` : `ID: ${user.id}`;
+            userInfo.style.display = 'block';
+        }
+
+        // Set button link
+        const actionBtn = document.getElementById('actionBtn');
+        actionBtn.href = buildUrl();
+
+        // Open in external browser (Safari)
+        actionBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = buildUrl();
+            
+            // Try to open in external browser
+            if (tg.openLink) {
+                tg.openLink(url);
+            } else {
+                window.open(url, '_blank');
+            }
+        });
+
         // Ripple effect
-        document.getElementById('actionBtn').addEventListener('click', function(e) {
+        actionBtn.addEventListener('click', function(e) {
             const btn = e.currentTarget;
             const rect = btn.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
