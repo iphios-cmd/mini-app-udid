@@ -24,9 +24,10 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
+            padding-bottom: 85px;
         }
 
-        /* Static mesh gradient background */
+        /* Background */
         .bg-mesh {
             position: fixed;
             top: 0;
@@ -42,7 +43,6 @@
             z-index: 0;
         }
 
-        /* Static floating orbs - no animation */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -76,7 +76,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Grid pattern */
         .grid {
             position: fixed;
             top: 0;
@@ -122,17 +121,11 @@
         }
 
         @keyframes cardEnter {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Icon with ring animation */
+        /* Icon */
         .icon-container {
             position: relative;
             width: 100px;
@@ -148,23 +141,12 @@
             animation: ringPulse 2s ease-out infinite;
         }
 
-        .icon-ring:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .icon-ring:nth-child(3) {
-            animation-delay: 1s;
-        }
+        .icon-ring:nth-child(2) { animation-delay: 0.5s; }
+        .icon-ring:nth-child(3) { animation-delay: 1s; }
 
         @keyframes ringPulse {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
         }
 
         .icon-wrapper {
@@ -177,19 +159,15 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                0 0 60px rgba(60, 122, 205, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 60px rgba(60, 122, 205, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        /* External icon image */
         .icon-img {
             width: 56px;
             height: 56px;
             object-fit: contain;
         }
 
-        /* Title */
         h1 {
             font-size: 32px;
             font-weight: 800;
@@ -202,7 +180,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Subtitle */
         .subtitle {
             font-size: 15px;
             color: rgba(255, 255, 255, 0.6);
@@ -211,7 +188,6 @@
             line-height: 1.6;
         }
 
-        /* Buttons */
         .buttons {
             display: flex;
             flex-direction: column;
@@ -234,25 +210,18 @@
             gap: 10px;
         }
 
-        .btn:active {
-            transform: scale(0.97);
-        }
+        .btn:active { transform: scale(0.97); }
 
-        /* Primary button with gradient */
         .btn-primary {
             background: linear-gradient(135deg, #3c7acd 0%, #5a9bd5 50%, #4a8bc7 100%);
             background-size: 200% 200%;
             color: white;
-            box-shadow: 
-                0 10px 40px -10px rgba(60, 122, 205, 0.6),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px -10px rgba(60, 122, 205, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 
-                0 20px 50px -10px rgba(60, 122, 205, 0.7),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px -10px rgba(60, 122, 205, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         .btn-icon {
@@ -260,11 +229,8 @@
             transition: transform 0.3s ease;
         }
 
-        .btn:hover .btn-icon {
-            transform: translateX(4px);
-        }
+        .btn:hover .btn-icon { transform: translateX(4px); }
 
-        /* Shine effect on buttons */
         .btn::after {
             content: '';
             position: absolute;
@@ -272,17 +238,217 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
         }
 
-        .btn:hover::after {
-            left: 100%;
+        .btn:hover::after { left: 100%; }
+
+        /* ========== ✨ ROUNDED BOTTOM NAVIGATION ✨ ========== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(20, 25, 55, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 6px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 
+                0 10px 40px -10px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(60, 122, 205, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-tab {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 12px 22px;
+            min-width: 90px;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 18px;
+            z-index: 2;
+        }
+
+        .nav-tab:active {
+            transform: scale(0.96);
+        }
+
+        .nav-tab.active {
+            color: #ffffff;
+        }
+
+        /* Animated pill background for active tab */
+        .nav-tab.active::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(60, 122, 205, 0.9), rgba(90, 155, 213, 0.7));
+            border-radius: 18px;
+            z-index: -1;
+            box-shadow: 
+                0 8px 25px -5px rgba(60, 122, 205, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: pillGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pillGlow {
+            from { box-shadow: 0 8px 25px -5px rgba(60, 122, 205, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+            to { box-shadow: 0 12px 35px -5px rgba(60, 122, 205, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-tab.active .nav-icon {
+            transform: scale(1.1);
+        }
+
+        .nav-tab:hover .nav-icon {
+            transform: translateY(-2px);
+        }
+
+        /* ========== PAGES ========== */
+        .page {
+            display: none;
+            width: 100%;
+            max-width: 480px;
+            padding: 20px 16px;
+            z-index: 10;
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 25px 0 30px;
+        }
+
+        .page-header h2 {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #8fb8e8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            padding-bottom: 30px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 22px;
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .product-card:active {
+            transform: scale(0.97);
+            background: rgba(60, 122, 205, 0.15);
+            border-color: rgba(60, 122, 205, 0.5);
+        }
+
+        .product-card:hover {
+            border-color: rgba(60, 122, 205, 0.5);
+            box-shadow: 0 15px 45px -10px rgba(60, 122, 205, 0.35);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(60, 122, 205, 0.35), rgba(90, 155, 213, 0.25));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            font-size: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px -8px rgba(60, 122, 205, 0.3);
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .product-desc {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.4;
+        }
+
+        .product-link {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #6aa3d9;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .product-card:active .product-link {
+            opacity: 1;
         }
 
         /* Particles */
@@ -307,37 +473,37 @@
         }
 
         @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
 
         /* Responsive */
         @media (max-width: 480px) {
-            .card {
-                padding: 40px 25px;
+            .card { padding: 40px 25px; }
+            h1 { font-size: 28px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-card { padding: 16px 12px; }
+            .bottom-nav { 
+                bottom: 16px; 
+                border-radius: 22px;
+                padding: 5px;
             }
-            h1 {
-                font-size: 28px;
+            .nav-tab { 
+                padding: 11px 18px; 
+                min-width: 85px;
+                font-size: 11px;
             }
+            .nav-icon { font-size: 19px; }
         }
 
-        /* Safe area */
-        @supports (padding-top: env(safe-area-inset-top)) {
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
             body {
-                padding-top: env(safe-area-inset-top);
-                padding-bottom: env(safe-area-inset-bottom);
+                padding-bottom: calc(85px + env(safe-area-inset-bottom));
+            }
+            .bottom-nav {
+                bottom: calc(20px + env(safe-area-inset-bottom));
             }
         }
     </style>
@@ -349,33 +515,99 @@
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
     <div class="grid"></div>
-    
-    <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Card -->
-    <div class="card">
-        <div class="icon-container">
-            <div class="icon-ring"></div>
-            <div class="icon-ring"></div>
-            <div class="icon-ring"></div>
-            <div class="icon-wrapper">
-                <img src="img/icon.svg" alt="UDID Icon" class="icon-img">
+    <!-- ========== PAGE: UDID (HOME) ========== -->
+    <div id="page-udid" class="page active" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 160px);">
+        <div class="card">
+            <div class="icon-container">
+                <div class="icon-ring"></div>
+                <div class="icon-ring"></div>
+                <div class="icon-ring"></div>
+                <div class="icon-wrapper">
+                    <img src="img/icon.png" alt="UDID Icon" class="icon-img" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>📱</text></svg>'">
+                </div>
+            </div>
+            <h1>Получить UDID</h1>
+            <p class="subtitle">Получите уникальный идентификатор устройства для установки приложений</p>
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="getUDID()">
+                    <span>Получить UDID</span>
+                    <span class="btn-icon">→</span>
+                </button>
             </div>
         </div>
+    </div>
 
-        <h1>Получить UDID</h1>
-        <p class="subtitle">
-            Получите уникальный идентификатор устройства для установки приложений
-        </p>
-
-        <div class="buttons">
-            <button class="btn btn-primary" onclick="getUDID()">
-                <span>Получить UDID</span>
-                <span class="btn-icon">→</span>
-            </button>
+    <!-- ========== PAGE: PRODUCTS ========== -->
+    <div id="page-products" class="page">
+        <div class="page-header">
+            <h2>🛍️ Товары</h2>
+            <p>Выберите продукт для перехода</p>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/premium-udid')">
+                <div class="product-icon">🔐</div>
+                <div class="product-name">Premium UDID</div>
+                <div class="product-desc">Приоритетная обработка и поддержка 24/7</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/pack-5')">
+                <div class="product-icon">📦</div>
+                <div class="product-name">Пакет 5 UDID</div>
+                <div class="product-desc">Выгодно для команды разработчиков</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/express')">
+                <div class="product-icon">⚡</div>
+                <div class="product-name">Express Install</div>
+                <div class="product-desc">Мгновенная установка приложений</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/security')">
+                <div class="product-icon">🛡️</div>
+                <div class="product-name">Безопасность+</div>
+                <div class="product-desc">Дополнительная защита ваших данных</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/renewal')">
+                <div class="product-icon">🔄</div>
+                <div class="product-name">Обновление</div>
+                <div class="product-desc">Продление доступа к сервису</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card" onclick="openProductLink('https://example.com/vip')">
+                <div class="product-icon">💎</div>
+                <div class="product-name">VIP Доступ</div>
+                <div class="product-desc">Все функции без ограничений</div>
+                <span class="product-link">Подробнее →</span>
+            </div>
         </div>
     </div>
+
+    <!-- ========== ✨ ROUNDED BOTTOM NAVIGATION ✨ ========== -->
+    <nav class="bottom-nav">
+        <button class="nav-tab active" data-page="page-udid" onclick="switchTab(this)">
+            <span class="nav-icon">📱</span>
+            <span>UDID</span>
+        </button>
+        <button class="nav-tab" data-page="page-products" onclick="switchTab(this)">
+            <span class="nav-icon">🛍️</span>
+            <span>Товары</span>
+        </button>
+    </nav>
 
     <script>
         // Initialize Telegram WebApp
@@ -396,17 +628,58 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Button click handlers
+        // ========== TAB SWITCHING ==========
+        function switchTab(tabBtn) {
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.selectionChanged();
+            }
+
+            // Update active tab
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            tabBtn.classList.add('active');
+
+            // Show selected page with animation
+            const pageId = tabBtn.dataset.page;
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+                if (page.id === pageId) {
+                    page.style.display = (pageId === 'page-udid') ? 'flex' : 'block';
+                    // Trigger reflow for animation
+                    void page.offsetWidth;
+                    page.classList.add('active');
+                } else {
+                    page.style.display = 'none';
+                }
+            });
+        }
+
+        // ========== PRODUCT LINKS ==========
+        function openProductLink(url) {
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred('light');
+            }
+            if (tg.openLink) {
+                tg.openLink(url);
+            } else {
+                window.open(url, '_blank');
+            }
+        }
+
+        // ========== MAIN BUTTON ==========
         function getUDID() {
             if (tg.HapticFeedback) {
                 tg.HapticFeedback.impactOccurred('medium');
             }
             const udidURL = 'https://get.udid.io/your-link';
-            tg.openLink(udidURL);
+            if (tg.openLink) {
+                tg.openLink(udidURL);
+            } else {
+                window.open(udidURL, '_blank');
+            }
         }
 
-        // Add ripple effect
-        document.querySelectorAll('.btn').forEach(btn => {
+        // Ripple effect
+        document.querySelectorAll('.btn, .product-card').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
@@ -419,7 +692,7 @@
                     width: ${size}px;
                     height: ${size}px;
                     border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.6);
+                    background: rgba(255, 255, 255, 0.35);
                     left: ${x}px;
                     top: ${y}px;
                     transform: scale(0);
@@ -434,15 +707,15 @@
 
         // Add ripple animation
         const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rippleEffect {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
+        style.textContent = `@keyframes rippleEffect { to { transform: scale(4); opacity: 0; }}`;
         document.head.appendChild(style);
+
+        // Handle Telegram theme
+        if (tg.onEvent) {
+            tg.onEvent('themeChanged', () => {
+                // Optional: adapt to Telegram theme
+            });
+        }
     </script>
 </body>
 </html>
