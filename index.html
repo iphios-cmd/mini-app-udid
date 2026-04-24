@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#eef1f8">
+    <meta name="color-scheme" content="light">
     <title>UDID Device</title>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=actay-wide@400,500,600,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -16,36 +20,47 @@
         }
 
         :root {
-            --accent: #387dff;
-            --accent-rgb: 56, 125, 255;
-            --accent-hover: #5a94ff;
-            --accent-press: #2d6ae8;
-            --accent-soft: rgba(56, 125, 255, 0.16);
-            --icon-frame: #3c7acd;
-            --icon-frame-rgb: 60, 122, 205;
-            --scene-base: #0c0e12;
-            --scene-mid: #10141c;
-            --scene-blob: rgba(56, 125, 255, 0.11);
-            --scene-blob-2: rgba(56, 125, 255, 0.05);
-            --grid-line: rgba(255, 255, 255, 0.04);
-            --grid-opacity: 0.35;
-            --text: #f2f4f8;
-            --text-muted: rgba(226, 232, 245, 0.58);
-            --card: #15181f;
-            --card-border: rgba(255, 255, 255, 0.06);
-            --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.35) inset;
-            --card-topbar: #387dff;
-            --icon-surface: rgba(255, 255, 255, 0.05);
-            --hint-surface: rgba(255, 255, 255, 0.03);
-            --hint-border: rgba(255, 255, 255, 0.07);
-            --loader-line: rgba(244, 247, 255, 0.92);
-            --loader-glow: rgba(56, 125, 255, 0.35);
-            --btn-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 12px 36px rgba(56, 125, 255, 0.22);
-            --ripple: rgba(255, 255, 255, 0.2);
+            --accent: #2f6feb;
+            --accent-rgb: 47, 111, 235;
+            --accent-hover: #4a82f5;
+            --accent-press: #2560d4;
+            --accent-soft: rgba(47, 111, 235, 0.12);
+            --icon-frame: #3a6fd8;
+            --icon-frame-rgb: 58, 111, 216;
+            --scene-base: #eef1f8;
+            --scene-mid: #e4e9f3;
+            --scene-blob: rgba(47, 111, 235, 0.1);
+            --scene-blob-2: rgba(47, 111, 235, 0.05);
+            --grid-line: rgba(20, 40, 80, 0.07);
+            --grid-opacity: 0.5;
+            --text: #121722;
+            --text-muted: rgba(18, 23, 34, 0.55);
+            --card: #ffffff;
+            --card-border: rgba(15, 30, 60, 0.09);
+            --card-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.95) inset,
+                0 12px 40px rgba(20, 45, 100, 0.09),
+                0 0 0 1px rgba(15, 30, 60, 0.05);
+            --card-topbar: var(--accent);
+            --icon-surface: rgba(47, 111, 235, 0.08);
+            --hint-surface: rgba(47, 111, 235, 0.05);
+            --hint-border: rgba(15, 30, 60, 0.1);
+            --loader-line: rgba(18, 26, 42, 0.88);
+            --loader-glow: rgba(90, 100, 118, 0.14);
+            --btn-shadow: 0 2px 10px rgba(25, 55, 120, 0.16), 0 12px 36px rgba(47, 111, 235, 0.22);
+            --ripple: rgba(255, 255, 255, 0.35);
+            --btn-icon-pad-bg: rgba(255, 255, 255, 0.22);
+            --btn-focus-ring: rgba(47, 111, 235, 0.45);
+            --icon-tile-highlight: rgba(255, 255, 255, 0.32);
+            --icon-tile-glow: rgba(47, 111, 235, 0.38);
+        }
+
+        html {
+            color-scheme: light;
         }
 
         body {
-            font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+            font-family: "Actay Wide", "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
             font-optical-sizing: auto;
             min-height: 100vh;
             min-height: 100dvh;
@@ -118,7 +133,7 @@
             min-height: 100dvh;
             overflow: hidden;
             animation: splashFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 1.22s;
+            animation-delay: 1.04s;
         }
 
         /* Интро не в дереве отрисовки, пока Mini App не готов: иначе в WKWebView анимации
@@ -141,7 +156,7 @@
             flex-shrink: 0;
             z-index: 2;
             transform-origin: center center;
-            animation: loaderStagePulse 1s cubic-bezier(0.34, 1.15, 0.52, 1) both;
+            animation: loaderStagePulse 0.84s cubic-bezier(0.37, 1.1, 0.55, 1) both;
         }
 
         @keyframes loaderStagePulse {
@@ -152,15 +167,24 @@
                 transform: scale(1.04);
             }
             14% {
-                transform: scale(0.985);
+                transform: scale(0.988);
             }
-            20% {
+            22% {
+                transform: scale(1.012);
+            }
+            30% {
                 transform: scale(1);
             }
-            46% {
-                transform: scale(1.022);
+            44% {
+                transform: scale(1.025);
             }
-            54% {
+            52% {
+                transform: scale(0.996);
+            }
+            60% {
+                transform: scale(1.012);
+            }
+            70% {
                 transform: scale(1);
             }
             100% {
@@ -192,7 +216,7 @@
             border-right: 0;
             border-bottom: 0;
             border-radius: 16px 0 0 0;
-            animation: cornerTL 1s cubic-bezier(0.33, 0, 0.25, 1) both;
+            animation: cornerTL 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
 
         .loader-corners span:nth-child(2) {
@@ -201,7 +225,7 @@
             border-left: 0;
             border-bottom: 0;
             border-radius: 0 16px 0 0;
-            animation: cornerTR 1s cubic-bezier(0.33, 0, 0.25, 1) both;
+            animation: cornerTR 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
 
         .loader-corners span:nth-child(3) {
@@ -210,7 +234,7 @@
             border-right: 0;
             border-top: 0;
             border-radius: 0 0 0 16px;
-            animation: cornerBL 1s cubic-bezier(0.33, 0, 0.25, 1) both;
+            animation: cornerBL 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
 
         .loader-corners span:nth-child(4) {
@@ -219,7 +243,7 @@
             border-left: 0;
             border-top: 0;
             border-radius: 0 0 16px 0;
-            animation: cornerBR 1s cubic-bezier(0.33, 0, 0.25, 1) both;
+            animation: cornerBR 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
 
         .loader-core {
@@ -246,7 +270,7 @@
             transform: scale(0.9);
             box-shadow: none;
             filter: none;
-            animation: ringMorph 1s cubic-bezier(0.37, 0, 0.63, 1) both;
+            animation: ringMorph 0.84s cubic-bezier(0.38, 1.08, 0.52, 1) both;
             z-index: 1;
         }
 
@@ -257,7 +281,7 @@
             max-width: 80px;
             max-height: 80px;
             object-fit: contain;
-            animation: logoMorphUnified 1s cubic-bezier(0.33, 0, 0.25, 1) both;
+            animation: logoMorphUnified 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
             z-index: 2;
         }
 
@@ -270,7 +294,7 @@
             opacity: 0;
             transform: scale(0.82);
             filter: none;
-            animation: checkMorph 1s cubic-bezier(0.34, 1.12, 0.52, 1) both;
+            animation: checkMorph 0.84s cubic-bezier(0.36, 1.2, 0.54, 1) both;
             z-index: 3;
         }
 
@@ -283,52 +307,48 @@
             stroke-dasharray: 28;
             stroke-dashoffset: 28;
             filter: none;
-            animation: checkDrawUnified 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: checkDrawUnified 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
         }
 
-        /* Углы: лёгкий динамический пульс, затем плавное схлопывание в такт округлению кольца */
+        /* Углы: движение → пауза в одной позе (застывание) → растворение; кольцо накрывает с тенью */
         @keyframes cornerTL {
             0% {
                 opacity: 1;
                 transform: translate(0, 0) scale(1);
             }
-            8% {
+            7% {
                 opacity: 1;
-                transform: translate(-3%, -3%) scale(1.05);
+                transform: translate(-3.5%, -3.5%) scale(1.06);
             }
-            16% {
+            15% {
                 opacity: 1;
-                transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(0.99);
             }
-            26% {
+            24% {
                 opacity: 1;
-                transform: translate(4%, 4%) scale(0.998);
+                transform: translate(6%, 6%) scale(0.99);
             }
-            34% {
+            32% {
                 opacity: 1;
-                transform: translate(8%, 8%) scale(0.985);
+                transform: translate(12%, 12%) scale(0.95);
             }
-            42% {
+            38% {
                 opacity: 1;
-                transform: translate(12%, 12%) scale(0.96);
+                transform: translate(17%, 17%) scale(0.91);
             }
-            50% {
-                opacity: 0.88;
-                transform: translate(16%, 16%) scale(0.93);
+            52% {
+                opacity: 1;
+                transform: translate(17%, 17%) scale(0.91);
             }
-            56% {
-                opacity: 0.55;
-                transform: translate(19%, 19%) scale(0.9);
+            58% {
+                opacity: 0.35;
+                transform: translate(17%, 17%) scale(0.91);
             }
-            62% {
-                opacity: 0.22;
-                transform: translate(21%, 21%) scale(0.87);
-            }
-            68%,
+            64%,
             100% {
                 opacity: 0;
                 visibility: hidden;
-                transform: translate(23%, 23%) scale(0.85);
+                transform: translate(17%, 17%) scale(0.91);
             }
         }
 
@@ -337,43 +357,39 @@
                 opacity: 1;
                 transform: translate(0, 0) scale(1);
             }
-            8% {
+            7% {
                 opacity: 1;
-                transform: translate(3%, -3%) scale(1.05);
+                transform: translate(3.5%, -3.5%) scale(1.06);
             }
-            16% {
+            15% {
                 opacity: 1;
-                transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(0.99);
             }
-            26% {
+            24% {
                 opacity: 1;
-                transform: translate(-4%, 4%) scale(0.998);
+                transform: translate(-6%, 6%) scale(0.99);
             }
-            34% {
+            32% {
                 opacity: 1;
-                transform: translate(-8%, 8%) scale(0.985);
+                transform: translate(-12%, 12%) scale(0.95);
             }
-            42% {
+            38% {
                 opacity: 1;
-                transform: translate(-12%, 12%) scale(0.96);
+                transform: translate(-17%, 17%) scale(0.91);
             }
-            50% {
-                opacity: 0.88;
-                transform: translate(-16%, 16%) scale(0.93);
+            52% {
+                opacity: 1;
+                transform: translate(-17%, 17%) scale(0.91);
             }
-            56% {
-                opacity: 0.55;
-                transform: translate(-19%, 19%) scale(0.9);
+            58% {
+                opacity: 0.35;
+                transform: translate(-17%, 17%) scale(0.91);
             }
-            62% {
-                opacity: 0.22;
-                transform: translate(-21%, 21%) scale(0.87);
-            }
-            68%,
+            64%,
             100% {
                 opacity: 0;
                 visibility: hidden;
-                transform: translate(-23%, 23%) scale(0.85);
+                transform: translate(-17%, 17%) scale(0.91);
             }
         }
 
@@ -382,43 +398,39 @@
                 opacity: 1;
                 transform: translate(0, 0) scale(1);
             }
-            8% {
+            7% {
                 opacity: 1;
-                transform: translate(-3%, 3%) scale(1.05);
+                transform: translate(-3.5%, 3.5%) scale(1.06);
             }
-            16% {
+            15% {
                 opacity: 1;
-                transform: translate(0, 0) scale(1);
+                transform: translate(0, 0) scale(0.99);
             }
-            26% {
+            24% {
                 opacity: 1;
-                transform: translate(4%, -4%) scale(0.998);
+                transform: translate(6%, -6%) scale(0.99);
             }
-            34% {
+            32% {
                 opacity: 1;
-                transform: translate(8%, -8%) scale(0.985);
+                transform: translate(12%, -12%) scale(0.95);
             }
-            42% {
+            38% {
                 opacity: 1;
-                transform: translate(12%, -12%) scale(0.96);
+                transform: translate(17%, -17%) scale(0.91);
             }
-            50% {
-                opacity: 0.88;
-                transform: translate(16%, -16%) scale(0.93);
+            52% {
+                opacity: 1;
+                transform: translate(17%, -17%) scale(0.91);
             }
-            56% {
-                opacity: 0.55;
-                transform: translate(19%, -19%) scale(0.9);
+            58% {
+                opacity: 0.35;
+                transform: translate(17%, -17%) scale(0.91);
             }
-            62% {
-                opacity: 0.22;
-                transform: translate(21%, -21%) scale(0.87);
-            }
-            68%,
+            64%,
             100% {
                 opacity: 0;
                 visibility: hidden;
-                transform: translate(23%, -23%) scale(0.85);
+                transform: translate(17%, -17%) scale(0.91);
             }
         }
 
@@ -427,171 +439,181 @@
                 opacity: 1;
                 transform: translate(0, 0) scale(1);
             }
-            8% {
+            7% {
                 opacity: 1;
-                transform: translate(3%, 3%) scale(1.05);
+                transform: translate(3.5%, 3.5%) scale(1.06);
             }
-            16% {
+            15% {
                 opacity: 1;
-                transform: translate(0, 0) scale(1);
-            }
-            26% {
-                opacity: 1;
-                transform: translate(-4%, -4%) scale(0.998);
-            }
-            34% {
-                opacity: 1;
-                transform: translate(-8%, -8%) scale(0.985);
-            }
-            42% {
-                opacity: 1;
-                transform: translate(-12%, -12%) scale(0.96);
-            }
-            50% {
-                opacity: 0.88;
-                transform: translate(-16%, -16%) scale(0.93);
-            }
-            56% {
-                opacity: 0.55;
-                transform: translate(-19%, -19%) scale(0.9);
-            }
-            62% {
-                opacity: 0.22;
-                transform: translate(-21%, -21%) scale(0.87);
-            }
-            68%,
-            100% {
-                opacity: 0;
-                visibility: hidden;
-                transform: translate(-23%, -23%) scale(0.85);
-            }
-        }
-
-        /* Лого: динамика + плавные дуги без рывков */
-        @keyframes logoMorphUnified {
-            0% {
-                opacity: 1;
-                transform: scale(0.9) rotate(-1.5deg);
-                filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.2));
-            }
-            12% {
-                opacity: 1;
-                transform: scale(1.05) rotate(0deg);
-                filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.34));
+                transform: translate(0, 0) scale(0.99);
             }
             24% {
                 opacity: 1;
-                transform: scale(1);
-                filter: drop-shadow(0 0 19px rgba(255, 255, 255, 0.42)) drop-shadow(0 0 34px rgba(56, 125, 255, 0.2));
+                transform: translate(-6%, -6%) scale(0.99);
             }
-            36% {
+            32% {
                 opacity: 1;
-                transform: scale(1.04) rotate(0.8deg);
-                filter: drop-shadow(0 0 13px rgba(255, 255, 255, 0.28));
+                transform: translate(-12%, -12%) scale(0.95);
             }
-            44% {
+            38% {
                 opacity: 1;
-                transform: scale(0.97) rotate(0deg);
-                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+                transform: translate(-17%, -17%) scale(0.91);
             }
             52% {
-                opacity: 0.7;
-                transform: scale(0.8);
-                filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.12));
+                opacity: 1;
+                transform: translate(-17%, -17%) scale(0.91);
+            }
+            58% {
+                opacity: 0.35;
+                transform: translate(-17%, -17%) scale(0.91);
             }
             64%,
             100% {
                 opacity: 0;
-                transform: scale(0.3);
-                filter: none;
+                visibility: hidden;
+                transform: translate(-17%, -17%) scale(0.91);
             }
         }
 
-        /* Кольцо: плавная дуга border-radius 30% → 50% (много стопов), лёгкий динамический overshoot по scale */
+        /* Лого: укладывается в фазу до «застывания» углов */
+        @keyframes logoMorphUnified {
+            0% {
+                opacity: 1;
+                transform: scale(0.88) rotate(-1.8deg);
+                filter: brightness(0) drop-shadow(0 2px 6px rgba(18, 24, 38, 0.1));
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1.05) rotate(0.35deg);
+                filter: brightness(0) drop-shadow(0 3px 10px rgba(18, 24, 38, 0.12))
+                    drop-shadow(0 12px 24px rgba(95, 105, 120, 0.07));
+            }
+            22% {
+                opacity: 1;
+                transform: scale(0.99) rotate(-0.35deg);
+                filter: brightness(0) drop-shadow(0 3px 8px rgba(18, 24, 38, 0.1));
+            }
+            32% {
+                opacity: 1;
+                transform: scale(1.04) rotate(0.75deg);
+                filter: brightness(0) drop-shadow(0 4px 12px rgba(18, 24, 38, 0.13))
+                    drop-shadow(0 14px 28px rgba(100, 110, 125, 0.075));
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: brightness(0) drop-shadow(0 3px 10px rgba(18, 24, 38, 0.1))
+                    drop-shadow(0 11px 22px rgba(95, 105, 120, 0.055));
+            }
+            48% {
+                opacity: 1;
+                transform: scale(1.02) rotate(-0.45deg);
+                filter: brightness(0) drop-shadow(0 3px 8px rgba(18, 24, 38, 0.085));
+            }
+            54% {
+                opacity: 0.55;
+                transform: scale(0.88) rotate(0deg);
+                filter: brightness(0) drop-shadow(0 2px 5px rgba(18, 24, 38, 0.06));
+            }
+            64%,
+            100% {
+                opacity: 0;
+                transform: scale(0.28);
+                filter: brightness(0);
+            }
+        }
+
+        /* Кольцо: быстрее к кругу; тень усиливается, пока углы «висят» и гаснут */
         @keyframes ringMorph {
             0%,
-            22% {
+            16% {
                 opacity: 0;
-                transform: scale(0.84);
+                transform: scale(0.8);
                 border-radius: 30%;
                 box-shadow: none;
             }
-            28% {
-                opacity: 0.12;
-                transform: scale(0.86);
-                border-radius: 30.5%;
-                box-shadow: none;
+            24% {
+                opacity: 0.18;
+                transform: scale(0.84);
+                border-radius: 31%;
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.045),
+                    0 2px 8px rgba(18, 26, 42, 0.05);
             }
             34% {
-                opacity: 0.28;
+                opacity: 0.45;
                 transform: scale(0.88);
-                border-radius: 31.5%;
-                box-shadow: 0 0 8px rgba(56, 125, 255, 0.12);
-            }
-            40% {
-                opacity: 0.48;
-                transform: scale(0.9);
                 border-radius: 33%;
-                box-shadow: 0 0 12px rgba(56, 125, 255, 0.16);
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.055),
+                    0 4px 12px rgba(18, 26, 42, 0.06),
+                    0 12px 26px rgba(92, 102, 118, 0.05);
             }
-            44% {
-                opacity: 0.72;
+            42% {
+                opacity: 0.78;
                 transform: scale(0.92);
-                border-radius: 35%;
-                box-shadow: 0 0 16px rgba(56, 125, 255, 0.18);
-            }
-            48% {
-                opacity: 0.92;
-                transform: scale(0.94);
                 border-radius: 38%;
-                box-shadow: 0 0 18px rgba(56, 125, 255, 0.2);
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.065),
+                    0 6px 16px rgba(18, 26, 42, 0.07),
+                    0 18px 34px rgba(92, 102, 118, 0.065);
             }
-            52% {
+            50% {
                 opacity: 1;
-                transform: scale(0.96);
-                border-radius: 42%;
-                box-shadow: 0 0 20px rgba(56, 125, 255, 0.22);
+                transform: scale(0.97);
+                border-radius: 45%;
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.075),
+                    0 8px 22px rgba(18, 26, 42, 0.085),
+                    0 26px 48px rgba(95, 105, 120, 0.08);
             }
             56% {
                 opacity: 1;
-                transform: scale(0.99);
-                border-radius: 46%;
-                box-shadow: 0 0 22px rgba(56, 125, 255, 0.22);
-            }
-            60% {
-                opacity: 1;
                 transform: scale(1.03);
-                border-radius: 48.5%;
-                box-shadow: 0 0 24px rgba(56, 125, 255, 0.2);
-            }
-            64% {
-                opacity: 1;
-                transform: scale(1.01);
                 border-radius: 49.5%;
-                box-shadow: 0 0 18px rgba(56, 125, 255, 0.16);
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.08),
+                    0 10px 28px rgba(18, 26, 42, 0.09),
+                    0 32px 56px rgba(95, 105, 120, 0.085);
             }
-            70%,
+            62% {
+                opacity: 1;
+                transform: scale(0.99);
+                border-radius: 50%;
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.07),
+                    0 7px 20px rgba(18, 26, 42, 0.075),
+                    0 22px 42px rgba(95, 105, 120, 0.065);
+            }
+            72%,
             100% {
                 opacity: 1;
                 transform: scale(1);
                 border-radius: 50%;
-                box-shadow: 0 0 14px rgba(56, 125, 255, 0.14);
+                box-shadow:
+                    0 0 0 1px rgba(18, 26, 42, 0.065),
+                    0 5px 14px rgba(18, 26, 42, 0.055),
+                    0 16px 30px rgba(95, 105, 120, 0.045);
             }
         }
 
         @keyframes checkMorph {
             0%,
-            52% {
+            44% {
                 opacity: 0;
-                transform: scale(0.78) rotate(-6deg);
+                transform: scale(0.76) rotate(-7deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.08) rotate(2.5deg);
             }
             58% {
                 opacity: 1;
-                transform: scale(1.1) rotate(2deg);
+                transform: scale(0.95) rotate(-1deg);
             }
             66% {
                 opacity: 1;
-                transform: scale(0.96) rotate(-0.5deg);
+                transform: scale(1.02) rotate(0.5deg);
             }
             76%,
             100% {
@@ -602,14 +624,17 @@
 
         @keyframes checkDrawUnified {
             0%,
-            54% {
+            46% {
                 stroke-dashoffset: 28;
             }
-            66% {
-                stroke-dashoffset: 16;
+            56% {
+                stroke-dashoffset: 18;
             }
-            78% {
-                stroke-dashoffset: 6;
+            68% {
+                stroke-dashoffset: 8;
+            }
+            80% {
+                stroke-dashoffset: 2;
             }
             90%,
             100% {
@@ -629,13 +654,14 @@
             max-width: 380px;
             background: var(--card);
             border-radius: 24px;
-            padding: 28px 22px 22px;
+            padding: 30px 22px 24px;
             border: 1px solid var(--card-border);
             box-shadow: var(--card-shadow);
             position: relative;
             overflow: hidden;
             animation: cardEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
             z-index: 1;
+            backdrop-filter: saturate(1.15);
         }
 
         .container::before {
@@ -679,27 +705,51 @@
         }
 
         .icon-wrap {
-            width: 68px;
-            height: 68px;
-            background: var(--icon-surface);
-            border-radius: 20px;
-            margin: 0 auto 18px;
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid rgba(var(--icon-frame-rgb), 0.25);
-            box-shadow:
-                0 0 0 1px rgba(0, 0, 0, 0.35) inset,
-                0 0 22px -2px rgba(var(--icon-frame-rgb), 0.11);
             animation: fadeUp 0.55s ease both;
             animation-delay: 0.04s;
         }
 
-        .icon-wrap img {
-            width: 40px;
-            height: 40px;
+        .icon-wrap__tile {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(152deg, #5b94ff 0%, var(--accent) 38%, var(--accent-press) 100%);
+            box-shadow:
+                0 1px 0 var(--icon-tile-highlight) inset,
+                0 10px 26px var(--icon-tile-glow),
+                0 2px 6px rgba(20, 45, 100, 0.14);
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+        }
+
+        .icon-wrap:hover .icon-wrap__tile {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 1px 0 var(--icon-tile-highlight) inset,
+                0 14px 32px var(--icon-tile-glow),
+                0 4px 10px rgba(20, 45, 100, 0.16);
+        }
+
+        .icon-wrap:active .icon-wrap__tile {
+            transform: translateY(0) scale(0.98);
+            transition-duration: 0.12s;
+        }
+
+        .icon-wrap__tile img {
+            width: 30px;
+            height: 30px;
             object-fit: contain;
             display: block;
+            filter: brightness(0) invert(1);
+            opacity: 0.96;
         }
 
         h1 {
@@ -709,6 +759,7 @@
             letter-spacing: -0.04em;
             line-height: 1.15;
             margin-bottom: 8px;
+            text-wrap: balance;
         }
 
         .desc {
@@ -718,6 +769,18 @@
             line-height: 1.5;
             max-width: 300px;
             margin: 0 auto;
+            padding-bottom: 2px;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            width: 36px;
+            height: 3px;
+            margin: 18px auto 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.35), transparent);
+            opacity: 0.85;
         }
 
         .action-panel {
@@ -804,7 +867,7 @@
         }
 
         .btn-primary:focus-visible {
-            outline: 2px solid rgba(255, 255, 255, 0.75);
+            outline: 2px solid var(--btn-focus-ring);
             outline-offset: 2px;
         }
 
@@ -824,7 +887,7 @@
             width: 44px;
             height: 44px;
             border-radius: 13px;
-            background: rgba(255, 255, 255, 0.12);
+            background: var(--btn-icon-pad-bg);
             border: none;
             box-shadow: none;
         }
@@ -1057,8 +1120,10 @@
     <div class="app-content" id="appContent">
         <main class="container">
             <header class="header">
-                <div class="icon-wrap">
-                    <img src="img/icon.png" alt="" width="40" height="40" decoding="async">
+                <div class="icon-wrap" aria-hidden="true">
+                    <div class="icon-wrap__tile">
+                        <img src="img/icon.png" alt="" width="30" height="30" decoding="async">
+                    </div>
                 </div>
                 <h1>UDID устройства</h1>
                 <p class="desc">Профиль для Safari — получите UDID iPhone в пару шагов.</p>
@@ -1114,6 +1179,16 @@
         if (tg && typeof tg.expand === "function") {
             tg.expand();
         }
+        if (tg && typeof tg.setBackgroundColor === "function") {
+            try {
+                tg.setBackgroundColor("#eef1f8");
+            } catch (e) {}
+        }
+        if (tg && typeof tg.setHeaderColor === "function") {
+            try {
+                tg.setHeaderColor("#eef1f8");
+            } catch (e) {}
+        }
 
         const user = tg && tg.initDataUnsafe ? tg.initDataUnsafe.user : null;
 
@@ -1163,12 +1238,12 @@
             if (appContent) {
                 setTimeout(function () {
                     appContent.classList.add("is-visible");
-                }, 1120);
+                }, 940);
             }
             if (splashScreen) {
                 setTimeout(function () {
                     splashScreen.remove();
-                }, 1620);
+                }, 1480);
             }
         }
 
