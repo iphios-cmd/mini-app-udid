@@ -121,6 +121,17 @@
             animation-delay: 1.22s;
         }
 
+        /* Интро не стартует с первого кадра: скрипт снимает .splash--hold после готовности Mini App */
+        .splash.splash--hold {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash.splash--hold,
+        .splash.splash--hold * {
+            animation: none !important;
+        }
+
         .loader-mark {
             position: relative;
             width: clamp(82px, 26vmin, 112px);
@@ -874,7 +885,7 @@
     </style>
 </head>
 <body>
-    <div class="splash" id="splashScreen" aria-hidden="true">
+    <div class="splash splash--hold" id="splashScreen" aria-hidden="true">
         <div class="loader-mark" aria-hidden="true">
             <div class="loader-corners">
                 <span></span>
@@ -970,17 +981,46 @@
         const splashScreen = document.getElementById("splashScreen");
         const appContent = document.getElementById("appContent");
 
-        if (appContent) {
-            setTimeout(function () {
-                appContent.classList.add("is-visible");
-            }, 1120);
+        function whenMiniAppHostReady(callback) {
+            var hasTg = window.Telegram && window.Telegram.WebApp;
+            function afterHostPaint() {
+                if (hasTg) {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            setTimeout(callback, 150);
+                        });
+                    });
+                } else {
+                    requestAnimationFrame(callback);
+                }
+            }
+            if (document.readyState === "complete") {
+                afterHostPaint();
+            } else {
+                window.addEventListener("load", afterHostPaint, { once: true });
+            }
         }
 
-        if (splashScreen) {
-            setTimeout(function () {
-                splashScreen.remove();
-            }, 1620);
+        function startSplashIntro() {
+            if (splashScreen) {
+                splashScreen.classList.remove("splash--hold");
+            }
+            if (tg && typeof tg.ready === "function") {
+                tg.ready();
+            }
+            if (appContent) {
+                setTimeout(function () {
+                    appContent.classList.add("is-visible");
+                }, 1120);
+            }
+            if (splashScreen) {
+                setTimeout(function () {
+                    splashScreen.remove();
+                }, 1620);
+            }
         }
+
+        whenMiniAppHostReady(startSplashIntro);
 
         const hintBox = document.getElementById("hintBox");
         const hintToggle = document.getElementById("hintToggle");
