@@ -121,9 +121,10 @@
             animation-delay: 1.22s;
         }
 
-        /* Интро не стартует с первого кадра: скрипт снимает .splash--hold после готовности Mini App */
+        /* Интро не в дереве отрисовки, пока Mini App не готов: иначе в WKWebView анимации
+           могли идти «вхолостую» и при показе уже быть на фазе круга вместо квадрата */
         .splash.splash--hold {
-            visibility: hidden;
+            display: none !important;
             pointer-events: none;
         }
 
@@ -165,7 +166,7 @@
             border-right: 0;
             border-bottom: 0;
             border-radius: 16px 0 0 0;
-            animation: cornerTL 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: cornerTL 1s cubic-bezier(0.42, 0, 0.58, 1) both;
         }
 
         .loader-corners span:nth-child(2) {
@@ -174,7 +175,7 @@
             border-left: 0;
             border-bottom: 0;
             border-radius: 0 16px 0 0;
-            animation: cornerTR 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: cornerTR 1s cubic-bezier(0.42, 0, 0.58, 1) both;
         }
 
         .loader-corners span:nth-child(3) {
@@ -183,7 +184,7 @@
             border-right: 0;
             border-top: 0;
             border-radius: 0 0 0 16px;
-            animation: cornerBL 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: cornerBL 1s cubic-bezier(0.42, 0, 0.58, 1) both;
         }
 
         .loader-corners span:nth-child(4) {
@@ -192,7 +193,7 @@
             border-left: 0;
             border-top: 0;
             border-radius: 0 0 16px 0;
-            animation: cornerBR 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: cornerBR 1s cubic-bezier(0.42, 0, 0.58, 1) both;
         }
 
         .loader-core {
@@ -213,13 +214,13 @@
             max-height: 92px;
             box-sizing: border-box;
             border: 2px solid var(--loader-line);
-            border-radius: 28%;
+            border-radius: 30%;
             background: transparent;
             opacity: 0;
             transform: scale(0.9);
             box-shadow: none;
             filter: none;
-            animation: ringMorph 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: ringMorph 1s cubic-bezier(0.42, 0, 0.58, 1) both;
             z-index: 1;
         }
 
@@ -230,7 +231,7 @@
             max-width: 80px;
             max-height: 80px;
             object-fit: contain;
-            animation: logoMorphUnified 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: logoMorphUnified 1s cubic-bezier(0.42, 0, 0.58, 1) both;
             z-index: 2;
         }
 
@@ -243,7 +244,7 @@
             opacity: 0;
             transform: scale(0.82);
             filter: none;
-            animation: checkMorph 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: checkMorph 1s cubic-bezier(0.42, 0, 0.58, 1) both;
             z-index: 3;
         }
 
@@ -256,7 +257,7 @@
             stroke-dasharray: 28;
             stroke-dashoffset: 28;
             filter: none;
-            animation: checkDrawUnified 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation: checkDrawUnified 1s cubic-bezier(0.42, 0, 0.58, 1) both;
         }
 
         /* Уход рамки плавно, пока кольцо выходит в круг — к 50% квадрат уже не виден */
@@ -1004,6 +1005,7 @@
         function startSplashIntro() {
             if (splashScreen) {
                 splashScreen.classList.remove("splash--hold");
+                void splashScreen.offsetWidth;
             }
             if (tg && typeof tg.ready === "function") {
                 tg.ready();
