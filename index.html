@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#eef1f8">
+    <meta name="theme-color" content="#f9f9f9">
     <meta name="color-scheme" content="light">
     <title>UDID Device</title>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -20,17 +20,17 @@
         }
 
         :root {
-            --accent: #2f6feb;
-            --accent-rgb: 47, 111, 235;
-            --accent-hover: #4a82f5;
-            --accent-press: #2560d4;
-            --accent-soft: rgba(47, 111, 235, 0.12);
-            --icon-frame: #3a6fd8;
-            --icon-frame-rgb: 58, 111, 216;
-            --scene-base: #eef1f8;
-            --scene-mid: #e4e9f3;
-            --scene-blob: rgba(47, 111, 235, 0.1);
-            --scene-blob-2: rgba(47, 111, 235, 0.05);
+            --accent: #3aa4dc;
+            --accent-rgb: 58, 164, 220;
+            --accent-hover: #4ab0e5;
+            --accent-press: #229bd8;
+            --accent-soft: rgba(58, 164, 220, 0.14);
+            --icon-frame: #45a8df;
+            --icon-frame-rgb: 69, 168, 223;
+            --scene-base: #f9f9f9;
+            --scene-mid: #d3e4ef;
+            --scene-blob: rgba(58, 164, 220, 0.12);
+            --scene-blob-2: rgba(58, 164, 220, 0.06);
             --grid-line: rgba(20, 40, 80, 0.07);
             --grid-opacity: 0.5;
             --text: #121722;
@@ -42,17 +42,17 @@
                 0 12px 40px rgba(20, 45, 100, 0.09),
                 0 0 0 1px rgba(15, 30, 60, 0.05);
             --card-topbar: var(--accent);
-            --icon-surface: rgba(47, 111, 235, 0.08);
-            --hint-surface: rgba(47, 111, 235, 0.05);
+            --icon-surface: rgba(58, 164, 220, 0.1);
+            --hint-surface: rgba(58, 164, 220, 0.06);
             --hint-border: rgba(15, 30, 60, 0.1);
             --loader-line: rgba(18, 26, 42, 0.88);
             --loader-glow: rgba(90, 100, 118, 0.14);
-            --btn-shadow: 0 2px 10px rgba(25, 55, 120, 0.16), 0 12px 36px rgba(47, 111, 235, 0.22);
+            --btn-shadow: 0 2px 10px rgba(25, 55, 120, 0.14), 0 12px 36px rgba(58, 164, 220, 0.3);
             --ripple: rgba(255, 255, 255, 0.35);
             --btn-icon-pad-bg: rgba(255, 255, 255, 0.22);
-            --btn-focus-ring: rgba(47, 111, 235, 0.45);
+            --btn-focus-ring: rgba(58, 164, 220, 0.45);
             --icon-tile-highlight: rgba(255, 255, 255, 0.32);
-            --icon-tile-glow: rgba(47, 111, 235, 0.38);
+            --icon-tile-glow: rgba(58, 164, 220, 0.38);
         }
 
         html {
@@ -761,7 +761,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(152deg, #5b94ff 0%, var(--accent) 38%, var(--accent-press) 100%);
+            background: linear-gradient(152deg, #4ab0e5 0%, var(--accent) 40%, var(--accent-press) 100%);
             box-shadow:
                 0 1px 0 var(--icon-tile-highlight) inset,
                 0 10px 26px var(--icon-tile-glow),
@@ -1227,12 +1227,12 @@
         }
         if (tg && typeof tg.setBackgroundColor === "function") {
             try {
-                tg.setBackgroundColor("#eef1f8");
+                tg.setBackgroundColor("#f9f9f9");
             } catch (e) {}
         }
         if (tg && typeof tg.setHeaderColor === "function") {
             try {
-                tg.setHeaderColor("#eef1f8");
+                tg.setHeaderColor("#f9f9f9");
             } catch (e) {}
         }
 
