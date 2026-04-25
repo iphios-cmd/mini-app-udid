@@ -132,8 +132,8 @@
             justify-content: center;
             min-height: 100dvh;
             overflow: hidden;
-            animation: splashFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            animation-delay: 1.04s;
+            animation: splashFadeOut 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.68s;
         }
 
         /* Интро не в дереве отрисовки, пока Mini App не готов: иначе в WKWebView анимации
@@ -156,35 +156,35 @@
             flex-shrink: 0;
             z-index: 2;
             transform-origin: center center;
-            animation: loaderStagePulse 0.84s cubic-bezier(0.37, 1.1, 0.55, 1) both;
+            animation: loaderStagePulse 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         @keyframes loaderStagePulse {
             0% {
                 transform: scale(1);
             }
-            7% {
-                transform: scale(1.04);
+            8% {
+                transform: scale(1.018);
             }
-            14% {
-                transform: scale(0.988);
-            }
-            22% {
-                transform: scale(1.012);
-            }
-            30% {
-                transform: scale(1);
-            }
-            44% {
-                transform: scale(1.025);
-            }
-            52% {
+            18% {
                 transform: scale(0.996);
             }
-            60% {
+            30% {
+                transform: scale(1.008);
+            }
+            40% {
+                transform: scale(1);
+            }
+            56% {
                 transform: scale(1.012);
             }
-            70% {
+            67% {
+                transform: scale(0.998);
+            }
+            78% {
+                transform: scale(1.004);
+            }
+            88% {
                 transform: scale(1);
             }
             100% {
@@ -216,7 +216,7 @@
             border-right: 0;
             border-bottom: 0;
             border-radius: 16px 0 0 0;
-            animation: cornerTL 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: cornerTL 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .loader-corners span:nth-child(2) {
@@ -225,7 +225,7 @@
             border-left: 0;
             border-bottom: 0;
             border-radius: 0 16px 0 0;
-            animation: cornerTR 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: cornerTR 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .loader-corners span:nth-child(3) {
@@ -234,7 +234,7 @@
             border-right: 0;
             border-top: 0;
             border-radius: 0 0 0 16px;
-            animation: cornerBL 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: cornerBL 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .loader-corners span:nth-child(4) {
@@ -243,7 +243,7 @@
             border-left: 0;
             border-top: 0;
             border-radius: 0 0 16px 0;
-            animation: cornerBR 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: cornerBR 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         .loader-core {
@@ -270,7 +270,7 @@
             transform: scale(0.9);
             box-shadow: none;
             filter: none;
-            animation: ringMorph 0.84s cubic-bezier(0.38, 1.08, 0.52, 1) both;
+            animation: ringMorph 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
             z-index: 1;
         }
 
@@ -281,7 +281,7 @@
             max-width: 80px;
             max-height: 80px;
             object-fit: contain;
-            animation: logoMorphUnified 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: logoMorphUnified 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
             z-index: 2;
         }
 
@@ -294,7 +294,7 @@
             opacity: 0;
             transform: scale(0.82);
             filter: none;
-            animation: checkMorph 0.84s cubic-bezier(0.36, 1.2, 0.54, 1) both;
+            animation: checkMorph 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
             z-index: 3;
         }
 
@@ -307,7 +307,7 @@
             stroke-dasharray: 28;
             stroke-dashoffset: 28;
             filter: none;
-            animation: checkDrawUnified 0.84s cubic-bezier(0.4, 0, 0.2, 1) both;
+            animation: checkDrawUnified 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         /* Углы: движение → пауза в одной позе (застывание) → растворение; кольцо накрывает с тенью */
@@ -1126,7 +1126,7 @@
                     </div>
                 </div>
                 <h1>UDID устройства</h1>
-                <p class="desc">Профиль для Safari — получите UDID iPhone в пару шагов.</p>
+                <p class="desc">Для передачи UDID, нажмите - <br>"Передать UDID"</p>
             </header>
 
             <section class="action-panel" aria-label="Действие">
@@ -1238,12 +1238,12 @@
             if (appContent) {
                 setTimeout(function () {
                     appContent.classList.add("is-visible");
-                }, 940);
+                }, 590);
             }
             if (splashScreen) {
                 setTimeout(function () {
                     splashScreen.remove();
-                }, 1480);
+                }, 920);
             }
         }
 
