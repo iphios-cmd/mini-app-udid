@@ -121,6 +121,45 @@
             transform: translateY(0);
         }
 
+        .browser-only-notice {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+            z-index: 2;
+            position: relative;
+        }
+
+        .browser-only-notice.is-visible {
+            display: block;
+        }
+
+        .browser-only-notice__card {
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(16, 24, 40, 0.08);
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 22px 48px rgba(30, 64, 175, 0.12);
+            text-align: center;
+            backdrop-filter: blur(16px);
+        }
+
+        .browser-only-notice__title {
+            margin: 0 0 10px;
+            font-size: 20px;
+            line-height: 1.25;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .browser-only-notice__text {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
         /* Интро на том же фоне, что и страница (прозрачный слой только поверх контента) */
         .splash {
             position: fixed;
@@ -1174,6 +1213,13 @@
         </main>
     </div>
 
+    <div class="browser-only-notice" id="browserOnlyNotice" aria-live="polite">
+        <div class="browser-only-notice__card">
+            <h2 class="browser-only-notice__title">Откройте страницу в Telegram</h2>
+            <p class="browser-only-notice__text">Эта страница работает только внутри Telegram Mini App. Вернитесь в Telegram и откройте ее из бота.</p>
+        </div>
+    </div>
+
     <script>
         const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
         if (tg && typeof tg.expand === "function") {
@@ -1206,6 +1252,7 @@
         actionBtn.href = buildUrl();
         const splashScreen = document.getElementById("splashScreen");
         const appContent = document.getElementById("appContent");
+        const browserOnlyNotice = document.getElementById("browserOnlyNotice");
 
         function whenMiniAppHostReady(callback) {
             var hasTg = window.Telegram && window.Telegram.WebApp;
@@ -1247,7 +1294,19 @@
             }
         }
 
-        whenMiniAppHostReady(startSplashIntro);
+        if (!tg) {
+            if (splashScreen) {
+                splashScreen.remove();
+            }
+            if (appContent) {
+                appContent.style.display = "none";
+            }
+            if (browserOnlyNotice) {
+                browserOnlyNotice.classList.add("is-visible");
+            }
+        } else {
+            whenMiniAppHostReady(startSplashIntro);
+        }
 
         const hintBox = document.getElementById("hintBox");
         const hintToggle = document.getElementById("hintToggle");
@@ -1261,7 +1320,12 @@
             });
         }
 
-        actionBtn.addEventListener("click", function (e) {
+        if (!tg) {
+            actionBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+            });
+        } else {
+            actionBtn.addEventListener("click", function (e) {
             e.preventDefault();
             const url = buildUrl();
 
@@ -1286,6 +1350,7 @@
                 window.open(url, "_blank");
             }
         });
+        }
     </script>
 </body>
 </html>
