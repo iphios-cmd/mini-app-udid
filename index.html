@@ -395,14 +395,10 @@
         try { tg.setHeaderColor("#ffffff"); } catch (e) {}
       }
 
-      var user = tg && tg.initDataUnsafe ? tg.initDataUnsafe.user : null;
-
       function buildUrl() {
-        var baseUrl = "https://nekoo.eu.org/udid";
-        if (user) {
-          return baseUrl + "/" + user.id + "/" + (user.username || "no_username") + ".mobileconfig";
-        }
-        return baseUrl + ".mobileconfig";
+        // nekoo.eu.org отдаёт подписанный профиль только по базовому URL.
+        // Пути /{id}/{username}.mobileconfig здесь не поддерживаются — iOS покажет «неверный профиль».
+        return "https://nekoo.eu.org/udid";
       }
 
       var actionBtn = document.getElementById("actionBtn");
