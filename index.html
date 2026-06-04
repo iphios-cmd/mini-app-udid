@@ -334,7 +334,7 @@
 
   <div class="screen" id="mainPage">
     <div class="screen-inner">
-      <a class="btn-udid" href="#" id="actionBtn" role="button">
+      <a class="btn-udid" href="https://nekoo.eu.org/udid" id="actionBtn" role="button" rel="noopener noreferrer">
         <span class="btn-udid__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <rect x="6" y="2" width="12" height="20" rx="2.5"/>
@@ -395,11 +395,7 @@
         try { tg.setHeaderColor("#ffffff"); } catch (e) {}
       }
 
-      function buildUrl() {
-        // nekoo.eu.org отдаёт подписанный профиль только по базовому URL.
-        // Пути /{id}/{username}.mobileconfig здесь не поддерживаются — iOS покажет «неверный профиль».
-        return "https://nekoo.eu.org/udid";
-      }
+      var UDID_URL = "https://nekoo.eu.org/udid";
 
       var actionBtn = document.getElementById("actionBtn");
       var mainPage = document.getElementById("mainPage");
@@ -420,11 +416,14 @@
           actionBtn.appendChild(ripple);
           setTimeout(function () { ripple.remove(); }, 560);
 
-          var url = buildUrl();
           if (typeof tg.openLink === "function") {
-            tg.openLink(url);
+            try {
+              tg.openLink(UDID_URL, { try_browser: "safari" });
+            } catch (err) {
+              tg.openLink(UDID_URL);
+            }
           } else {
-            window.open(url, "_blank");
+            window.open(UDID_URL, "_blank", "noopener,noreferrer");
           }
         });
       }
